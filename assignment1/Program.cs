@@ -21,95 +21,13 @@ namespace assignment1
     {
         static void Main(string[] args)
         {
-            //Set a constant for the size of the collection
-            const int wineItemCollectionSize = 4000;
-
-            //Set a constant for the path to the CSV File
-            const string pathToCSVFile = "../../../datafiles/winelist.csv";
-
-            //Create an instance of the UserInterface class
-            UserInterface userInterface = new UserInterface();
-
-            //Create an instance of the WineItemCollection class
-            IWineCollection wineItemCollection = new WineItemCollection(wineItemCollectionSize);
-
-            //Create an instance of the CSVProcessor class
-            CSVProcessor csvProcessor = new CSVProcessor();
-
-            //Display the Welcome Message to the user
-            userInterface.DisplayWelcomeGreeting();
-
-            //Display the Menu and get the response. Store the response in the choice integer
-            //This is the 'primer' run of displaying and getting.
-            int choice = userInterface.DisplayMenuAndGetResponse();
-
-            while (choice != 5)
-            {
-                switch (choice)
-                {
-                    case 1:
-                        //Load the CSV File
-                        bool success = csvProcessor.ImportCSV(wineItemCollection, pathToCSVFile);
-                        if (success)
-                        {
-                            //Display Success Message
-                            userInterface.DisplayImportSuccess();
-                        }
-                        else
-                        {
-                            //Display Fail Message
-                            userInterface.DisplayImportError();
-                        }
-                        break;
-
-                    case 2:
-                        //Print Entire List Of Items
-                        string[] allItems = wineItemCollection.GetPrintStringsForAllItems();
-                        if (allItems.Length > 0)
-                        {
-                            //Display all of the items
-                            userInterface.DisplayAllItems(allItems);
-                        }
-                        else
-                        {
-                            //Display error message for all items
-                            userInterface.DisplayAllItemsError();
-                        }
-                        break;
-
-                    case 3:
-                        //Search For An Item
-                        string searchQuery = userInterface.GetSearchQuery();
-                        string itemInformation = wineItemCollection.FindById(searchQuery);
-                        if (itemInformation != null)
-                        {
-                            userInterface.DisplayItemFound(itemInformation);
-                        }
-                        else
-                        {
-                            userInterface.DisplayItemFoundError();
-                        }
-                        break;
-
-                    case 4:
-                        //Add A New Item To The List
-                        string[] newItemInformation = userInterface.GetNewItemInformation();
-                        if (wineItemCollection.FindById(newItemInformation[0]) == null)
-                        {
-                            wineItemCollection.AddNewItem(newItemInformation[0], newItemInformation[1], newItemInformation[2]);
-                            userInterface.DisplayAddWineItemSuccess();
-                        }
-                        else
-                        {
-                            userInterface.DisplayItemAlreadyExistsError();
-                        }
-                        break;
-                }
-
-                //Get the new choice of what to do from the user
-                choice = userInterface.DisplayMenuAndGetResponse();
-            }
-
+            // Create a new userInterface instance , I am going call it x for simplicty, and because I like algebra
+            UserInterface x = new UserInterface();
+            //Create var that is of type int to hold user choice from DisplayOpenScreen method in UserInterface
+            int choice = x.DisplayOpenScreen();
+            x.getChoiceNumber(choice);
         }
+
     }
-}
+    }
+

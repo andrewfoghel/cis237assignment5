@@ -8,10 +8,6 @@ namespace assignment1
 {
     interface IWineCollection
     {
-        void AddNewItem(string id, string description, string pack);
-
-        string[] GetPrintStringsForAllItems();
-
-        string FindById(string id);
+        
     }
 }

@@ -74,8 +74,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserInterface.cs" />
-    <Compile Include="WineItem.cs" />
-    <Compile Include="WineItemCollection.cs" />
+    <Compile Include="WineItemRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -86,6 +85,7 @@
     <None Include="BeverageModel.edmx.diagram">
       <DependentUpon>BeverageModel.edmx</DependentUpon>
     </None>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
