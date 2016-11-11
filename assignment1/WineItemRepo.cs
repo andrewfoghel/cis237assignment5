@@ -118,6 +118,42 @@ namespace assignment1
             }
 
         }
+
+        //Method that adds object to the database, takes parameter drink of type beverage 
+        public void addToDataBase()
+        {
+            //new var for id
+            Console.WriteLine("Enter a new id");
+            string idI = Console.ReadLine();
+            //new var for name
+            Console.WriteLine("Enter a new name");
+            string nameI = Console.ReadLine();
+            //new var for pack
+            Console.WriteLine("Enter a new pack size (In Mililiters)");
+            string packI = Console.ReadLine() + "ml";
+            //new var for price
+            Console.WriteLine("Enter a new price (In USD)");
+            string priceI = Console.ReadLine() + "$";
+            //new var for active
+            Console.WriteLine("Is this drink still in production? (y/n)");
+            //new string for active answer
+            string activeI = Console.ReadLine();
+            //new bool to see if item is still in production, use .equals because thats whats need for a string 
+            bool isDrinkable = false;
+            if (activeI.Equals("y"))
+            {
+                isDrinkable = true;
+            }else if (activeI.Equals("n"))
+            {
+                isDrinkable = false;
+            }else
+            {
+                Console.WriteLine("Try again");
+            }
+
+
+
+        }
         
     }
 }
