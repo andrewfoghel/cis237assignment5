@@ -27,14 +27,10 @@ namespace assignment1
             Console.WriteLine("1. Print the list?");
             Console.WriteLine("2. Search by id");
             Console.WriteLine("3. Search by name");
-            Console.WriteLine("4. Search by price");
-            Console.WriteLine("5. Search by activity");
-            Console.WriteLine("6. Add a new beverage to the list");
-            Console.WriteLine("7. Update information for a beverage"); 
-            Console.WriteLine("8. Delete a beverage");
-            Console.WriteLine("9. Oop, I want to do something else for you to program (:");
-            Console.WriteLine("10. Enter Again");
-            Console.WriteLine("Enter any number other than 1-10 to exit");
+            Console.WriteLine("4. Add a new beverage to the list");
+            Console.WriteLine("5. Update information for a beverage"); 
+            Console.WriteLine("6. Delete a beverage");
+            Console.WriteLine("Enter any number other than 1---6 to exit");
 
             //Set UserChoice to option picked
             userChoice = int.Parse(Console.ReadLine());
@@ -66,23 +62,20 @@ namespace assignment1
                     x.searchByName(name);
                     break;
                 case 4:
+                    x.addToDataBase();
                     break;
                 case 5:
+                    Console.WriteLine("Enter Id of beverage");
+                    string idy = Console.ReadLine();
+                    x.updateInDataBase(idy);
                     break;
                 case 6:
+                    Console.WriteLine("Enter Id of beverage");
+                    string idx = Console.ReadLine();
+                    x.removeFromDataBase(idx);
                     break;
-                case 7:
-                    break;
-                case 8:
-                    break;
-                case 9:
-                    break;
-                //Get userChoice Again 
-                case 10:
-                    choice = DisplayOpenScreen();
-                    getChoiceNumber(choice);
-                    break;
-                //Dont Exit program but get choices again
+
+                //Exit
                 default:
   
                     break;
