@@ -2,7 +2,7 @@
 
 ## Due 11-22-2016
 
-## Author
+## Andrew Foghel 
 
 ## Description
 
@@ -79,6 +79,6 @@ Solution Requirements:
 | README                                  | 5      |
 | Total                                   | 100    |
 
-## Outside Resources Used
+## Youtube
 
-## Known Problems, Issues, And/Or Errors in the Program
+## When I try to do sort by total cost my bubble sort doesn’t work

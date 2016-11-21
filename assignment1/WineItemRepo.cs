@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace assignment1
 {
-    class WineItemRepo
+    class WineItemRepo 
     {
         //Create a new instance to access properties from entities, called x for simplicity
         BeverageAFoghelEntities x = new BeverageAFoghelEntities();
@@ -89,15 +89,36 @@ namespace assignment1
 
         //Method that searches by name, pretty much the same as searchById method but just uses list instead of one object 
         //WHEN USERINPUT IS AN INT IT TERMINATES THE PROGRAM WITHOUT DOING ANYTHING
+        //Check to see if list is empty
         public void searchByName(string name)
         {
             try
             {
-                bevs = x.Beverages.Where(drink => drink.name == name).ToList();
-                //Foreach loop because it is a list now
-                foreach (Beverage y in bevs)
+                bevs = x.Beverages.Where(drink => drink.name.ToLower() == name.ToLower()).ToList();
+                if (bevs.Count != 0)
                 {
-                    Console.WriteLine(y.id + " | " + y.name + " | " + y.pack + " | " + y.price + " | " + y.active + "\n");
+                    //Foreach loop because it is a list now
+                    foreach (Beverage y in bevs)
+                    {
+                        Console.WriteLine(y.id + " | " + y.name + " | " + y.pack + " | " + y.price + " | " + y.active + "\n");
+                    }
+                }else
+                {
+                    Console.WriteLine("Error, beverage not found");
+                    Console.WriteLine("Would you like to enter a different name?");
+                    Console.WriteLine("1. Yes");
+                    Console.WriteLine("2. No");
+                    int newUserInput = int.Parse(Console.ReadLine());
+                    if (newUserInput == 1)
+                    {
+                        Console.WriteLine("Enter new name");
+                        string newName = Console.ReadLine();
+                        searchByName(newName);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Have a nice day");
+                    }
                 }
             }
             catch (Exception e)
@@ -241,7 +262,25 @@ namespace assignment1
             Beverage drink = x.Beverages.Find(id);
             if(drink == null)
             {
-                //Try again
+                Console.WriteLine("This Item doesn't exist would you like to enter a new id? (y/n)");
+                string userPick = Console.ReadLine();
+
+                if (userPick.Equals("y"))
+                {
+                    Console.WriteLine("Enter a new Id");
+                    string newId = Console.ReadLine();
+                    updateInDataBase(newId);
+                }else if (userPick.Equals("n"))
+                {
+                    Console.WriteLine("Have a good one");
+                }
+                else
+                {
+                    Console.WriteLine("This Item doesn't exist would you like to enter a new id? (y/n)");
+                    userPick = Console.ReadLine();
+                }
+
+
             }else
             {
                 //Update name
@@ -300,7 +339,32 @@ namespace assignment1
                 }
             }
         }
+        //Sort by lowest price
+        public void sortByLowestPrice()
+        {
+            Beverage[] drinks = x.Beverages.ToArray();
+            Beverage temp;
 
+                   for (int i = 0; i <drinks.Length-1; i++)
+                    {
+                        while(drinks[i].price > drinks[i + 1].price)
+                        {
+                            temp = drinks[i];
+                            drinks[i] = drinks[i + 1];
+                            drinks[i + 1] = temp;
+
+                        }
+
+                 }
+                foreach(Beverage drink in drinks)
+            {
+                Console.WriteLine(drink.id + " | " + drink.name + " | " + drink.pack + " | " + drink.price + " | " + drink.active);
+            }
+          
+
+            
+            
+        }
 
     }
 }

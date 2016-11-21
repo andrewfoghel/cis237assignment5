@@ -14,7 +14,7 @@ namespace assignment1
 
         //Create new var for WineItemRepo class
         WineItemRepo x = new WineItemRepo();
-        
+
         //Create new variables for the program
         //user choice var, instantiated at zero for reference, then after DisplayOpenScreenMethod it inherits a new value and if value is above 7 
         //it calls function again asking user to reenter what is desired to be done
@@ -30,6 +30,7 @@ namespace assignment1
             Console.WriteLine("4. Add a new beverage to the list");
             Console.WriteLine("5. Update information for a beverage"); 
             Console.WriteLine("6. Delete a beverage");
+            Console.WriteLine("7. Sort by lowest price");
             Console.WriteLine("Enter any number other than 1---6 to exit");
 
             //Set UserChoice to option picked
@@ -74,7 +75,9 @@ namespace assignment1
                     string idx = Console.ReadLine();
                     x.removeFromDataBase(idx);
                     break;
-
+                case 7:
+                    x.sortByLowestPrice();
+                    break;
                 //Exit
                 default:
   
